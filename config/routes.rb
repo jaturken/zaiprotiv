@@ -5,6 +5,7 @@ Rails.application.routes.draw do
       resources :subjects do
         resources :arguments
       end
+      get '/search/:text', to: 'searches#search', as: 'search'
     end
   end
 
