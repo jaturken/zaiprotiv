@@ -3,7 +3,8 @@ module Api::V1
     def search
       # TODO: implement Sphinx search by text
       text = CGI::unescape(params[:text])
-      render json: { text: text }
+      subjects = Subject.search(text)
+      render json: subjects
     end
   end
 end
