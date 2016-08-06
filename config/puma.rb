@@ -49,9 +49,11 @@ environment ENV['RAILS_ENV'] || 'production'
 
 # daemonize true
 
-pidfile "/home/zaiprotiv/shared/tmp/pids/puma.pid"
-# stdout_redirect "/home/zaiprotiv/shared/tmp/log/stdout", "/home/zaiprotiv/shared/tmp/log/stderr"
+if Rails.env == 'production'
+  pidfile "/home/zaiprotiv/shared/tmp/pids/puma.pid"
+  # stdout_redirect "/home/zaiprotiv/shared/tmp/log/stdout", "/home/zaiprotiv/shared/tmp/log/stderr"
 
-threads 0, 16
+  threads 0, 16
 
-bind "unix:///home/zaiprotiv/shared/tmp/sockets/puma.sock"
+  bind "unix:///home/zaiprotiv/shared/tmp/sockets/puma.sock"
+end
