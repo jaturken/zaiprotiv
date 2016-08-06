@@ -47,7 +47,7 @@ port        ENV.fetch("PORT") { 3000 }
 
 environment ENV['RAILS_ENV'] || 'production'
 
-daemonize true
+# daemonize true
 
 pidfile "/home/zaiprotiv/shared/tmp/pids/puma.pid"
 stdout_redirect "/home/zaiprotiv/shared/tmp/log/stdout", "/home/zaiprotiv/shared/tmp/log/stderr"
