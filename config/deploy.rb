@@ -66,7 +66,7 @@ task :deploy => :environment do
     invoke :'deploy:cleanup'
 
     to :launch do
-      invoke 'puma:restart'
+      # invoke :'puma:restart'
     end
   end
 end
@@ -79,22 +79,22 @@ end
 #  - http://nadarei.co/mina/helpers
 
 
-namespace :puma do
-  desc "Start the application"
-  task :start do
-    queue 'echo "-----> Start Puma"'
-    queue "cd #{current_path} && RAILS_ENV=#{stage} && bin/puma.sh start", :pty => false
-  end
+# namespace :puma do
+#   desc "Start the application"
+#   task :start do
+#     queue 'echo "-----> Start Puma"'
+#     queue "cd #{current_path} && RAILS_ENV=#{stage} && bin/puma.sh start", :pty => false
+#   end
 
-  desc "Stop the application"
-  task :stop do
-    queue 'echo "-----> Stop Puma"'
-    queue "cd #{current_path} && RAILS_ENV=#{stage} && bin/puma.sh stop"
-  end
+#   desc "Stop the application"
+#   task :stop do
+#     queue 'echo "-----> Stop Puma"'
+#     queue "cd #{current_path} && RAILS_ENV=#{stage} && bin/puma.sh stop"
+#   end
 
-  desc "Restart the application"
-  task :restart, :roles => :app, :except => { :no_release => true } do
-    queue 'echo "-----> Restart Puma"'
-    queue "cd #{current_path} && RAILS_ENV=#{stage} && bin/puma.sh restart"
-  end
-end
+#   desc "Restart the application"
+#   task :restart, :roles => :app, :except => { :no_release => true } do
+#     queue 'echo "-----> Restart Puma"'
+#     queue "cd #{current_path} && RAILS_ENV=#{stage} && bin/puma.sh restart"
+#   end
+# end
