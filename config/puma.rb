@@ -40,7 +40,7 @@ port        ENV.fetch("PORT") { 3000 }
 # end
 
 # Allow puma to be restarted by `rails restart` command.
-# plugin :tmp_restart
+plugin :tmp_restart
 
 
 #!/usr/bin/env puma
@@ -50,7 +50,7 @@ environment ENV['RAILS_ENV'] || 'production'
 # daemonize true
 
 pidfile "/home/zaiprotiv/shared/tmp/pids/puma.pid"
-stdout_redirect "/home/zaiprotiv/shared/tmp/log/stdout", "/home/zaiprotiv/shared/tmp/log/stderr"
+# stdout_redirect "/home/zaiprotiv/shared/tmp/log/stdout", "/home/zaiprotiv/shared/tmp/log/stderr"
 
 threads 0, 16
 
