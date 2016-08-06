@@ -6,7 +6,6 @@ gem 'rails', '~> 5.0.0'
 gem 'active_model_serializers'
 gem 'thinking-sphinx'
 gem 'mysql2'
-# Use Puma as the app server
 gem 'puma', '~> 3.0'
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 gem 'jbuilder', '~> 2.5'
@@ -14,9 +13,13 @@ gem 'jbuilder', '~> 2.5'
 gem 'redis', '~> 3.0'
 # Use ActiveModel has_secure_password
 # gem 'bcrypt', '~> 3.1.7'
-
-
 gem 'rack-cors'
+
+gem 'devise'
+gem 'devise_token_auth' # Token based authentication for Rails JSON APIs
+gem 'omniauth' # required for devise_token_auth
+
+
 
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
