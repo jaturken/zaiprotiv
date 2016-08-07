@@ -63,8 +63,8 @@ task :deploy => :environment do
     invoke :'deploy:link_shared_paths'
     invoke :'bundle:install'
     invoke :'rails:db_migrate'
-    queue 'RAILS_ENV=production bundle exec rake ts:regenerate'
     invoke :'deploy:cleanup'
+    # queue 'RAILS_ENV=production bundle exec rake ts:regenerate'
 
     to :launch do
       # invoke :'puma:restart'
