@@ -20,10 +20,10 @@ module V1
     # POST /subjects
     # POST /subjects.json
     def create
-      @subject = Subject.new(subject_params)
+      @argument = Argument.new(argument_params)
 
-      if @subject.save
-        render :show, status: :created, location: @subject
+      if @argument.save
+        render json: @argument
       else
         render json: @subject.errors, status: :unprocessable_entity
       end
@@ -54,6 +54,10 @@ module V1
       # Never trust parameters from the scary internet, only allow the white list through.
       def subject_params
         params.require(:subject).permit(:name, :description, :image_url)
+      end
+
+      def argument_params
+        params.permit(:subject_id, :title, :body, :positive)
       end
   end
 end
