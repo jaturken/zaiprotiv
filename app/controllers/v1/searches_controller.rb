@@ -1,4 +1,4 @@
-module Api::V1
+module V1
   class SearchesController < ApplicationController
     def search
       # TODO: implement Sphinx search by text

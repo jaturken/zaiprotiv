@@ -1,19 +1,20 @@
-module Api::V1
-  class SubjectsController < ApplicationController
+module V1
+  class ArgumentsController < ApplicationController
     before_action :set_subject, only: [:show, :update, :destroy]
 
-    # GET /subjects
-    # GET /subjects.json
+    # GET /subjects/1/arguments
     def index
-      @subjects = Subject.all
-      render json: @subjects
+      subject = Subject.find(params[:subject_id])
+      arguments = subject.arguments.select(:id, :title, :body, :rank, :positive)
+      pos, neg = arguments.partition{ |arg| arg.positive? }
+
+      render json: { positives: pos, negatives: neg }
     end
 
-    # GET /subjects/1
-    # GET /subjects/1.json
+    # GET /subjects/1/arguments/1
     def show
-      @subject = Subject.find(params[:id])
-      render json: @subject
+      argument = Argument.find(params[:id])
+      render json: argument
     end
 
     # POST /subjects
