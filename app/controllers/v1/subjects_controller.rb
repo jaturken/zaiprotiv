@@ -22,7 +22,15 @@ module V1
       @subject = Subject.new(subject_params)
 
       if @subject.save
-        render :show, status: :created, location: @subject
+        argument_params = params[:arguments].first.values.flatten.compact rescue []
+        unless argument_params.empty?
+          ActiveRecord::Base.transaction do
+            argument_params.map do |p|
+              @subject.arguments.create(p.except('id', 'isImportant'))
+            end
+          end
+        end
+        render :show, status: :created, location: v1_subject_url(@subject, format: :json)
       else
         render json: @subject.errors, status: :unprocessable_entity
       end
@@ -52,7 +60,8 @@ module V1
 
       # Never trust parameters from the scary internet, only allow the white list through.
       def subject_params
-        params.require(:subject).permit(:name, :description, :image_url)
+        argument_params = [:title, :body, :positive]
+        params.require(:subject).permit(:name, :description, :image_url, arguments: [positive: argument_params, negative: argument_params])
       end
   end
 end
