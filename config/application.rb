@@ -35,7 +35,7 @@ module Zaiprotiv
     }
 
     # CORS allow everything to everybody
-    config.middleware.insert_before 0, "Rack::Cors" do
+    config.middleware.insert_before 0, Rack::Cors do
      allow do
        origins 'localhost:3005'
        resource '*',

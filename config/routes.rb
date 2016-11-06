@@ -5,6 +5,9 @@ Rails.application.routes.draw do
     resources :subjects do
       resources :arguments
     end
+    
+    resources :arguments
+
     get '/search/:text', to: 'searches#search', as: 'search'
     mount_devise_token_auth_for 'User', at: 'auth'
   end
