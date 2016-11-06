@@ -30,7 +30,7 @@ module V1
             end
           end
         end
-        render :show, status: :created, location: v1_subject_url(@subject, format: :json)
+        render json: @subject
       else
         render json: @subject.errors, status: :unprocessable_entity
       end
