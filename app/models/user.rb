@@ -9,4 +9,6 @@ class User < ActiveRecord::Base
           :omniauthable
           # , :confirmable
   include DeviseTokenAuth::Concerns::User
+
+  has_many :samples
 end

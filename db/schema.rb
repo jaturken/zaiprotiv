@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160806223151) do
+ActiveRecord::Schema.define(version: 20161111193432) do
 
   create_table "arguments", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.integer  "subject_id",                           null: false
@@ -22,6 +22,13 @@ ActiveRecord::Schema.define(version: 20160806223151) do
     t.datetime "updated_at",                           null: false
   end
 
+  create_table "samples", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
+    t.integer  "user_id"
+    t.integer  "subject_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "subjects", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4" do |t|
     t.string   "name"
     t.string   "description"
@@ -30,7 +37,7 @@ ActiveRecord::Schema.define(version: 20160806223151) do
     t.datetime "updated_at",  null: false
   end
 
-  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=latin1" do |t|
+  create_table "users", force: :cascade, options: "ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_unicode_ci" do |t|
     t.string   "provider",                             default: "email", null: false
     t.string   "uid",                                  default: "",      null: false
     t.string   "encrypted_password",                   default: "",      null: false
