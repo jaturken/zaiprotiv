@@ -1,0 +1,1 @@
+json.partial! "sample_arguments/sample_argument", sample_argument: @sample_argument

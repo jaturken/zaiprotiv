@@ -1,0 +1,1 @@
+json.array! @sample_arguments, partial: 'sample_arguments/sample_argument', as: :sample_argument

@@ -1,0 +1,2 @@
+class SampleArgument < ApplicationRecord
+end

@@ -1,4 +1,5 @@
 Rails.application.routes.draw do
+  resources :sample_arguments
   resources :samples
   devise_for :users
   resources :arguments
