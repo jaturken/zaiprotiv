@@ -1,9 +1,11 @@
 Rails.application.routes.draw do
-  resources :sample_arguments
-  resources :samples
   devise_for :users
-  resources :arguments
+
   namespace :v1 do
+    resources :samples do
+      resources :sample_arguments
+    end
+
     resources :subjects do
       resources :arguments
     end
